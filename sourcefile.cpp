@@ -14,7 +14,7 @@ Sourcefile::Sourcefile (std::string filename) {
     file.read(&buffer[0], filesize);            // read the file into the buffer
     file.close();                               // close the file
 
-    Sourcefile::file_contents = buffer; //TODO is this by ref or by value???
+    Sourcefile::file_contents = buffer;         //TODO is this by ref or by value???
 }
 
 std::string& Sourcefile::get_file_buffer () {

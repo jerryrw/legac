@@ -5,7 +5,7 @@
 
 std::string assembly_stub = ".globl main\n main:\n movl $2, %eax\n ret\n";
 
-int write_asm_stub (std::string filename) {
+int write_asm_stub (std::string filename) {     // write stub to file
     std::ofstream file;
     file.open(filename);        //TODO error checking
     file << assembly_stub;

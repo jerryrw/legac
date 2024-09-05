@@ -3,7 +3,7 @@
 
 #include <fstream>
 
-class Sourcefile {
+class Sourcefile {      // object to read in and buffer the source code file
 
     private:
         std::string file_contents;

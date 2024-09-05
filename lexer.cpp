@@ -19,29 +19,29 @@ std::string Lexer::get_next_token() {       //TODO consider an itorator??
         character = this->source_file_buffer[this->curr_position];
 
         // skip the whitespace
-        if (whitespace.count(character)) {  // charater is in whitespace set
+        if (whitespace.count(character)) {                                  // charater is in whitespace set
             while (whitespace.count(character)) {
-                this->curr_position = this->curr_position + 1;  // advance the position index
-                character = this->source_file_buffer[this->curr_position];  //get the next character
+                this->curr_position = this->curr_position + 1;              // advance the position index
+                character = this->source_file_buffer[this->curr_position];  // get the next character
             } 
         }
-        if (operators.count(character)) {   // character is in operators set
-            //TODO two character operators
-            token = character;              // save the operator
+        if (operators.count(character)) {                   // character is in operators set
+                                                            //TODO two character operators
+            token = character;                              // save the operator
             this->curr_position = this->curr_position + 1;  // advance the position index
             return token;
         }
-        if (isdigit(character)){            // at this level the digit is not in an identifier
+        if (isdigit(character)){                                // at this level the digit is not in an identifier
             while (isdigit(character)) {
-                token += character;         // append the digit to the token
+                token += character;                             // append the digit to the token
                 this->curr_position = this->curr_position + 1;  // advance the position index
                 character = this->source_file_buffer[this->curr_position];
             }
             return token;
         }
-        if (isalpha(character)) {
+        if (isalpha(character)) {                               // identifiers and keywords
             while (isalpha(character) | isdigit(character) | character == '_') {
-                token += character;         // append the character to the token
+                token += character;                             // append the character to the token
                 this->curr_position = this->curr_position + 1;  // advance the position index
                 character = this->source_file_buffer[this->curr_position];
             }

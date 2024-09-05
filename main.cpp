@@ -13,18 +13,19 @@
 
 int main (int argc, char* argv[]) {
     
-    std::string command;
-    std::string source_file_name;
+    std::string command;                    // for the system commands for pre-processing and linking using gcc
+    std::string source_file_name;           // full name of the source code file to be compiled
     std::string filename;                   // for filename without extension
     std::string extension;                  // for the extension
     const char* command_to_pass;            // needs to be a c-string
     bool clean_up = false;                  //to remove intermediate files while debugging
     int result;                             // for holding various result codes
 
-/*
+/* commented out while debugging
+
     if (argc < 2) {
         std::cout << "No filename to process" << std::endl;
-        return 2;                           //TODO Need to settle on an error plan
+        return 1;                                //TODO Need to settle on an error plan
     }
     
     source_file_name = argv[1];                  //TODO error checking: does file exist?
@@ -39,6 +40,7 @@ int main (int argc, char* argv[]) {
     command_to_pass = command.c_str();
     result = system(command_to_pass);
     if (result !=0) {                       //TODO error handling
+        std::cout << "An error occured in pre-processing" << std::endl;
         return 1;
     }
     std::string intermediate_file_name = filename + ".i";  // set the intermediate filename
@@ -46,7 +48,6 @@ int main (int argc, char* argv[]) {
 // This is where the actual compiler part kicks in
     Sourcefile thefile(intermediate_file_name);           // read the source code file into a buffer
     Lexer lexer(thefile.get_file_buffer());               // instantiate the lexer using the buffer
-//lexer.print();//debug
     std::string temp_token = lexer.get_next_token();
     while (temp_token != "") {
         std::cout << temp_token << std::endl;
@@ -61,6 +62,7 @@ int main (int argc, char* argv[]) {
     command_to_pass = command.c_str();
     result = system(command_to_pass);
     if (result != 0) {                      //TODO Error handling
+        std::cout << "An error occured in llinking" << std::endl;
         return 1;
     }
 
