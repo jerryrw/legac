@@ -18,7 +18,7 @@ int main (int argc, char* argv[]) {
     std::string filename;                   // for filename without extension
     std::string extension;                  // for the extension
     const char* command_to_pass;            // needs to be a c-string
-    bool clean_up = false;                   //to remove intermediate files while debugging
+    bool clean_up = false;                  //to remove intermediate files while debugging
     int result;                             // for holding various result codes
 
 /*
