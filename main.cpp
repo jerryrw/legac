@@ -10,7 +10,7 @@
 #include <iostream>
 #include <string>
 
-
+// comment for testing git
 int main (int argc, char* argv[]) {
     
     std::string command;                    // for the system commands for pre-processing and linking using gcc
